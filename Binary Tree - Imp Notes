@@ -1,0 +1,41 @@
+-Diff between BST and BT
+1)BST is node based where each child nodes has further left and right subtree that are BST too. 
+In BT is unordered
+2)BST if faster for insert,deletes and searches than BT as it is ordered
+3)BST left subtree has itmes less than the node while right subtree is vice versa
+
+-Duplicates in BST:
+By definition dups are not allowed but can be exempted using one of the following three options.
+-Have a count for each value along with its left and right child
+-Have a separate hashmap with the keys and their frequency, the BST however will only have one occurence for each value.
+-Insert the same keys either left or right of the main key. Eg new 8 will be added immediately after the prev 8 and the subtree will be attached to the new 8.
+
+#TRaversing through a BT:
+-REcursion:Pre/Post/In
+-Iteration: Level
+-Can be used either ways
+Exercises:
+https://www.geeksforgeeks.org/data-structures-binary-trees-question-5/
+#Contructing a Tree from traversals:
+https://www.youtube.com/watch?time_continue=67&v=s5XRtcud35E&feature=emb_logo
+
+-INSERTION IN A BT IN LEVEL ORDER:
+https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
+-Traversals in BT:
+https://www.youtube.com/watch?v=cbaWHXSsSCY
+Vertical order traversal:https://www.youtube.com/watch?v=PQKkr036wRc
+--In/Pre/Post/Vertical(Queue+Hash map): DFS 
+--Level:BFS (Queue)
+-Top View for BT:
+
+
+-AVL Trees:
+AVL trees invented to overcome the drawbacks of the BT when it becomes imbalanaced.
+As in only left node of root are filled, which behaves like a linked list and give O(n) instead of O(log n) for search,addition and deletion
+https://www.youtube.com/watch?v=jDM6_TnYIqE
+-At most height of AVL tree=1.44 log n, if there are n nodes in the tree.
+-Time to search/insert/delete-O(logn)
+-https://www.geeksforgeeks.org/practice-questions-height-balancedavl-tree/
+
+-Red Black Tree:
+To avoid the frequent rotations performed on AVL trees, Red-Blac trees are used.
