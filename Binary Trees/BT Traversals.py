@@ -79,6 +79,7 @@ def PostOrder(self,root):
 	return(self.PostOrder(root.left)+self.PostOrder(root.right)+[root.val])
 
 #Iterative:
+Ref:https://www.geeksforgeeks.org/iterative-postorder-traversal/
 #Algorithm: Two stacks
 -add the first node i.e root to the stack
 -pop it and add it to another stack say 'op'
@@ -100,21 +101,3 @@ def PostOrder(self,root):
 		if curr.right:
 			st.append(curr.right)
 	return(op[::-1])
-
-
-
-
-
-
-
-
-
-#Iterative:
-#Algorithm:
-1. Push root to first stack.
-2. Loop while first stack is not empty
-   2.1 Pop a node from first stack and push it to second stack
-   2.2 Push left and right children of the popped node to first stack
-3. Print contents of second stack
-
-
