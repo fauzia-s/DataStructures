@@ -18,6 +18,8 @@ Exercises:
 https://www.geeksforgeeks.org/data-structures-binary-trees-question-5/
 #Contructing a Tree from traversals:
 https://www.youtube.com/watch?time_continue=67&v=s5XRtcud35E&feature=emb_logo
+#Level order traversal:
+
 
 -INSERTION IN A BT IN LEVEL ORDER:
 https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
@@ -27,6 +29,12 @@ Vertical order traversal:https://www.youtube.com/watch?v=PQKkr036wRc
 --In/Pre/Post/Vertical(Queue+Hash map): DFS 
 --Level:BFS (Queue)
 -Top View for BT:
+
+
+-Validate a Binary Search Tree:Min/Max theory
+-root(float('-inf'),float('inf'))
+https://www.youtube.com/watch?v=MILxfAbIhrE
+
 
 
 -AVL Trees:
