@@ -10,6 +10,8 @@ def inOrder(self,root):
 	op+=[root.val]
 	op+=self.inOrder(root.right)
 	return op #Returns the traversed nodes in an array
+
+
 #Iterative:Most of the time involves two stacks
 #Algorithm:(Long Story Short: Traverse through the left nodes first then print the root and then the right ones.)
 1) Create an empty stack S.
@@ -25,7 +27,7 @@ def inOrder(self,root):
 def inOrder(self,root):
 	if not root:
 		return
-	st=[root]
+	st=[]
 	op=[]
 	while True:
 		if root:
@@ -54,7 +56,7 @@ def PreOrder(self,root):
 #Pop it
 #Append right
 #Append left
-#Pop: Left will be out first then right->DLR->PreOrder
+#Pop: Left will be out first then right->DLR(DataLeftRight)->PreOrder
 https://www.geeksforgeeks.org/iterative-preorder-traversal/
 def PreOrder(self,root):
     if not root:
