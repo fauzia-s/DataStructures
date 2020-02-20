@@ -1,0 +1,10 @@
+EdgeCases for each datastrcuture:
+
+1)LinkedList:
+-Check if head is None
+-Check if dups are in head
+
+2)BinaryTree:
+-Check if root node is None
+
+3)
