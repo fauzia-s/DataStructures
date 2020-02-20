@@ -140,6 +140,9 @@ new2.detectLoop()
 
 ***Leetcode:
 https://leetcode.com/problems/design-linked-list/
+Other solutions:
+https://leetcode.com/problems/design-linked-list/discuss/258792/Python-Singly-and-Doubly-LinkedList
+
 #Edge cases for add_at_index function:
 -1 element,add at 0th index
 -n elements,add at nth index
