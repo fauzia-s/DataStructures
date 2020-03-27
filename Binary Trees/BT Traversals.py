@@ -1,15 +1,31 @@
 #Traversals-Recursive and Iterative
 
 1)InOrder:
-#Recursvie
-def inOrder(self,root):
-	op=[]
-	if root is None:
-		return []
-	op+=self.inOrder(root.left)
-	op+=[root.val]
-	op+=self.inOrder(root.right)
-	return op #Returns the traversed nodes in an array
+class Solution:
+    #Option1:Recursion:Local variable
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        l=[] #Local variable, but append the value for each recursion, to being being reset
+        if not root:
+            return
+        if root.left:
+            l+=self.inorderTraversal(root.left)
+        l.append(root.val)
+        if root.right:
+            l+=self.inorderTraversal(root.right)
+        return(l)
+    
+    #Option2:Recursion:Global variable
+    def __init__(self):
+        self.l=[]
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return
+        if root.left:
+            self.inorderTraversal(root.left)
+        self.l.append(root.val)
+        if root.right:
+            self.inorderTraversal(root.right)
+        return(self.l)
 
 
 #Iterative:Most of the time involves two stacks
