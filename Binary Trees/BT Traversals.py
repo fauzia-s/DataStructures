@@ -26,6 +26,27 @@ class Solution:
         if root.right:
             self.inorderTraversal(root.right)
         return(self.l)
+    #   Option3:Recursive: One liner return
+    def inorderTraversal(self,root:TreeNode)->List[int]:
+        if not root:
+            return []
+        return(self.inorderTraversal(root.left)+[root.val]+self.inorderTraversal(root.right))
+    
+    #Option4:Iterative
+    def inorderTraversal(self,root:TreeNode)->List[int]:
+        if not root:
+            return
+        st=[]
+        op=[]
+        while st or root:
+            if root:
+                st.append(root)
+                root=root.left
+            else:
+                curr=st.pop()
+                op.append(curr.val)
+                root=curr.right
+        return(op)
 
 
 #Iterative:Most of the time involves two stacks
@@ -45,17 +66,15 @@ def inOrder(self,root):
 		return
 	st=[]
 	op=[]
-	while True:
+	while st or root:
 		if root:
 			st.append(root)
 			root=root.left
-		elif (st):
+		else: #if st is nonempty
 			curr=st.pop()
 			op.append(curr.val)
 			if curr.right:
 				root=curr.right
-		else:
-			break
 	return(op)
 
 2)PreOrder:
@@ -119,3 +138,61 @@ def PostOrder(self,root):
 		if curr.right:
 			st.append(curr.right)
 	return(op[::-1])
+
+
+4)Level Order Traversal:
+
+#Opt1:Iterative:
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return
+        q=collections.deque()
+        q.append(root)
+        res=[]
+        count=0
+        while q:
+            l=len(q)
+            temp=[]
+            while l>0:                
+                curr=q.popleft()
+                temp.append(curr.val)
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
+                l-=1
+            res.append(temp)
+        return(res)
+
+#Opt2:Recursion:List
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res=[]
+        self.dfs(root,0,res)
+        return(res)
+    
+    def dfs(self,root,level,res):
+        if not root:
+            return
+        if len(res)<=level:
+            res.append([])
+        res[level].append(root.val)
+        self.dfs(root.left,level+1,res)
+        self.dfs(root.right,level+1,res)
+
+ #Opt3:Recursion:Dictionary:Best Solution
+ class Solution:
+
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        hmap={}
+        if not root:
+            return
+        self.dfs(root, 0,hmap)
+        return (list(hmap.values()))
+    def dfs(self,node, level,hmap):
+        if not node:
+            return
+        hmap.setdefault(level, []).append(node.val)
+        self.dfs(node.left, level+1,hmap)
+        self.dfs(node.right, level+1,hmap)

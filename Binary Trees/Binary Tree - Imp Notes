@@ -2,7 +2,7 @@
 1)BST is node based where each child nodes has further left and right subtree that are BST too. 
 In BT is unordered
 2)BST if faster for insert,deletes and searches than BT as it is ordered
-3)BST left subtree has itmes less than the node while right subtree is vice versa
+3)BST left subtree has items less than the node while right subtree is vice versa
 
 -Duplicates in BST:
 By definition dups are not allowed but can be exempted using one of the following three options.
@@ -16,9 +16,13 @@ By definition dups are not allowed but can be exempted using one of the followin
 -Can be used either ways
 Exercises:
 https://www.geeksforgeeks.org/data-structures-binary-trees-question-5/
+
 #Contructing a Tree from traversals:
 https://www.youtube.com/watch?time_continue=67&v=s5XRtcud35E&feature=emb_logo
+
 #Level order traversal:
+Use a queue for Iterative approach
+Use a stack+level
 
 
 -INSERTION IN A BT IN LEVEL ORDER:
