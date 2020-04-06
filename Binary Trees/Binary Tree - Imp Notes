@@ -31,9 +31,21 @@ https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
 https://www.youtube.com/watch?v=cbaWHXSsSCY
 Vertical order traversal:https://www.youtube.com/watch?v=PQKkr036wRc
 --In/Pre/Post/Vertical(Queue+Hash map): DFS 
---Level:BFS (Queue)
--Top View for BT:
+--Level:BFS (Queue),DFS (list),DFS(hashmap)
+--Vertical Order:
+--Top View for BT:
 
+-Number of Unique BST for n nodes:
+**Catalan Number:
+C(n+1)=(2(2n+1)/(n+2))*C(n)   OR C(n)=(2n)!/((n+1)!*n!) OR 
+Check notes for generating function
+-Other question patterns that can use Catalan Numbers:https://www.youtube.com/watch?v=77Vjkb025X0
+	-Unique number of Trees
+	-Handshake problem
+	-Paranthesis
+	-Series questions:(11-1-1)
+	-Mountain ranges: Number of mountains from (0,0) to (2n,0)
+	-Poincare Duality
 
 -Validate a Binary Search Tree:Min/Max theory
 -root(float('-inf'),float('inf'))

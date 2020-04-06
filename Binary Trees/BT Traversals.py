@@ -196,3 +196,149 @@ class Solution:
         hmap.setdefault(level, []).append(node.val)
         self.dfs(node.left, level+1,hmap)
         self.dfs(node.right, level+1,hmap)
+
+5)Vertical Order Traversal:
+
+
+
+6)Checking if a BT is balanced:
+
+
+7)Constructing a BST from two traversals (one of which is Inorder):
+
+A)In and Pre:https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
+Approach:
+1)Recursion:Self discovered
+	-Hashmap: to store the indexes for the inorder traversal (determines which node is left/right of parent)
+	-Traverse through the preorder/post order to go through each node		
+	-Subtree function:helper function for each node encountered in traversal
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not preorder:
+            return
+        root=TreeNode(preorder[0])
+        finalRoot=root
+        l=0
+        h={}
+
+        while l<len(inorder):
+            h[inorder[l]]=l
+            l+=1
+        for i in preorder[1:]:
+            curr=TreeNode(i)
+            while 1:
+                if h[i]<h[root.val]:
+                    if root.left is None:
+                        root.left=curr
+                        break
+                    else:
+                        root=root.left
+                else:
+                    if root.right is None:
+                        root.right=curr
+                        break
+                    else:
+                        root=root.right
+        return(finalRoot)
+        
+2)Recursion:https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/401124/Python-easy-solution-with-comments
+class Solution(object):
+    def buildTree(self, preorder, inorder):
+        """
+        :type preorder: List[int]
+        :type inorder: List[int]
+        :rtype: TreeNode
+        """
+        
+        # Recursive solution
+        if inorder:   
+            # Find index of root node within in-order traversal
+            index = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[index])
+            
+            # Recursively generate left subtree starting from 
+            # 0th index to root index within in-order traversal
+            root.left = self.buildTree(preorder, inorder[:index])
+            
+            # Recursively generate right subtree starting from 
+            # next of root index till last index
+            root.right = self.buildTree(preorder, inorder[index+1:])
+            return root
+
+B)In and Post:https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/discuss/481414/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal-Py-All-in-One-By-Talse
+1)Recursion: root then right then left->if we traverse from the end for post order
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        if inorder:
+            root_val=postorder.pop()
+            #print(root_val)
+            root=TreeNode(root_val)
+            root_idx=inorder.index(root.val)
+            root.right=self.buildTree(inorder[root_idx+1:],postorder)
+            root.left=self.buildTree(inorder[:root_idx],postorder)    
+            return root
+2)Iteration:Self discovery
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        if not postorder:
+            return
+        root=TreeNode(postorder[-1])
+        finalroot=root
+        h={inorder[i]:i for i in range(len(inorder))}
+        i=len(postorder)-2 #As we have to start from 2nd last element in the array
+        print(h)
+        while i>=0:
+            curr=postorder[i]
+            root=finalroot
+            #print(curr)
+            # idx=inorder.index(curr)
+            while 1:                
+                if h[curr]<h[root.val]:
+                    if not root.left:
+                        root.left=TreeNode(curr)
+                        break
+                    else:
+                        root=root.left
+                else:
+                    if not root.right:
+                        root.right=TreeNode(curr)
+                        break
+                    else:
+                        root=root.right
+            i-=1
+        return(finalroot)
+3)
+  def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        if not postorder: return
+        #ind is the index of inorder
+        stack, root = [], TreeNode(postorder[-1]), 
+        stack.append(root)
+        i, j = len(inorder)-1, len(postorder)-2
+        while j >= 0:
+        	#establish right sub tree before hitting the common root
+            if stack[-1].val != inorder[i]:
+                stack[-1].right = TreeNode(postorder[j])
+                stack.append(stack[-1].right)
+            else: 
+            #right subtree is established, pop all right subtree node out but keep the last one as the root of the comming left node.
+                while stack and stack[-1].val == inorder[i]:
+                    node = stack.pop(); i -= 1
+                node.left = TreeNode(postorder[j])
+                stack.append(node.left)
+            j-= 1
+        return root
+
+8)Bottom Up approach:
+Ref LC-Ques:Find leaves of a binary tree:
+https://leetcode.com/problems/find-leaves-of-binary-tree/
+class Solution:
+    def findLeaves(self, root: TreeNode):
+        depth_dict={}
+        def bottomup_Depth(node):
+            if not node:
+                return 0
+            depth=max(bottomup_Depth(node.left),bottomup_Depth(node.right))+1
+            depth_dict.setdefault(depth,[]).append(node.val)
+            return depth
+        bottomup_Depth(root)
+        return(depth_dict.values())
