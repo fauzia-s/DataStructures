@@ -329,8 +329,7 @@ class Solution:
         return root
 
 8)Bottom Up approach:
-Ref LC-Ques:Find leaves of a binary tree:
-https://leetcode.com/problems/find-leaves-of-binary-tree/
+Ref LC-Ques:Find leaves of a binary tree:https://leetcode.com/problems/find-leaves-of-binary-tree/
 class Solution:
     def findLeaves(self, root: TreeNode):
         depth_dict={}
